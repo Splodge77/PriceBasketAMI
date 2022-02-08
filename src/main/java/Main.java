@@ -10,6 +10,8 @@ public class Main {
 
         String name = "";
 
+        boolean checkout = false;
+
         Basket basket = new Basket();
 
         while (name.equals("")){
@@ -18,7 +20,7 @@ public class Main {
             System.out.println("Welcome " + name + "! What can i get for you?");
         }
 
-        while (basket.items.isEmpty()){
+        while (!checkout){
             System.out.println("Enter items: ");
             Item newItem =  new Item();
             newItem.name = scanner.next();
@@ -27,7 +29,10 @@ public class Main {
             for (Item item : basket.items){
                 System.out.println(item.name);
             }
-            // will only print one item at this point
+            System.out.println("Anything else for you?");
+            if (scanner.next().equals("No")){
+                checkout = true;
+            }
         }
 
     }
