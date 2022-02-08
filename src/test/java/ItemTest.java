@@ -25,4 +25,17 @@ public class ItemTest {
         double expected = 3.99;
         assertEquals(expected, item.getPrice(), 1e-15);
     }
+
+    @Test
+    public void canSetName() {
+        item.setName("Bacon");
+        assertEquals("Bacon", item.getName());
+    }
+
+    @Test
+    public void canSetPrice() {
+        item.setPrice(1.49);
+    }
+
+
 }
