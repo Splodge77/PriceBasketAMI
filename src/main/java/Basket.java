@@ -34,4 +34,17 @@ public class Basket {
     public void deleteItems(){
         this.items.clear();
     }
+
+    public Item getItemByName(String name){
+        for (Item item : this.items){
+            if (item.name.equals(name)){
+                return item;
+            }
+        }
+        return null;
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
 }

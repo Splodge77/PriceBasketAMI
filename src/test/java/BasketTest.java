@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BasketTest {
 
@@ -32,5 +32,30 @@ public class BasketTest {
         assertEquals(toCheck, basket.getItemsArray());
     }
 
+    @Test
+    public void canAddItem(){
+        Item newItem = new Item("Mushroom");
+        basket.addItem(newItem);
+        ArrayList<Item> emptyArray = new ArrayList<>();
+        assertNotEquals(emptyArray, basket.getItemsArray());
+    }
+
+    @Test
+    public void hasId(){
+        assertNotNull(basket.getId());
+    }
+
+    @Test
+    public void hasCapacity(){
+        assertEquals(100, basket.getCapacity());
+    }
+
+    @Test
+    public void canFindItem(){
+        String expectedName = "Cheese";
+        Item toCheck = basket.getItemByName("Cheese");
+        String actualName = toCheck.getName();
+        assertEquals(expectedName, actualName);
+    }
 
 }
