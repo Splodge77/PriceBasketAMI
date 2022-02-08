@@ -22,7 +22,7 @@ public class Main {
 
         while (!checkout){
             System.out.println("Enter items: ");
-            Item newItem =  new Item();
+            Item newItem =  new Item("");
             newItem.name = scanner.next();
             basket.items.add(newItem);
 

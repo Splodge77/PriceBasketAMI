@@ -15,5 +15,23 @@ public class Basket {
         capacity = 100;
     }
 
+    public UUID getId() {
+        return id;
+    }
 
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
+    public ArrayList<Item> getItemsArray(){
+        return this.items;
+    }
+
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+
+    public void deleteItems(){
+        this.items.clear();
+    }
 }
