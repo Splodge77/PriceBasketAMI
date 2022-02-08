@@ -3,9 +3,9 @@ package main.java;
 public class Item {
 
     String name;
-    double price;
+    Double price;
 
-    public Item(String name, double price){
+    public Item(String name, Double price){
         this.name = name;
         this.price = price;
     }
@@ -14,7 +14,7 @@ public class Item {
         return this.name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return this.price;
     }
 
@@ -22,7 +22,7 @@ public class Item {
         this.name = name;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }

@@ -8,11 +8,13 @@ public class Basket {
     UUID id;
     ArrayList<Item> items;
     Integer capacity;
+    Double total;
 
     public Basket(){
         id = UUID.randomUUID();
         items = new ArrayList<>();
         capacity = 100;
+        total = 0.00;
     }
 
     public UUID getId() {
@@ -46,5 +48,13 @@ public class Basket {
 
     public int getCapacity() {
         return this.capacity;
+    }
+
+    public Double getTotal() {
+        return this.total;
+    }
+
+    public void setTotal(Double total){
+        this.total = total;
     }
 }

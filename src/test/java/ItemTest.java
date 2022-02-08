@@ -22,8 +22,9 @@ public class ItemTest {
 
     @Test
     public void hasPrice(){
-        double expected = 3.99;
-        assertEquals(expected, item.getPrice(), 1e-15);
+        Double expected = 3.99;
+        Double actual = item.getPrice();
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -34,7 +35,10 @@ public class ItemTest {
 
     @Test
     public void canSetPrice() {
-        item.setPrice(1.49);
+        Double expected = 1.49;
+        item.setPrice(expected);
+        Double actual = item.getPrice();
+        assertEquals(expected, actual);
     }
 
 

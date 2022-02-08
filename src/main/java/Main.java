@@ -8,17 +8,8 @@ public class Main {
         // would potentially re-name this class 'teller' or 'clerk' for more clarity
         Scanner scanner = new Scanner(System.in);
 
-        String name = "";
-
         boolean checkout = false;
-
         Basket basket = new Basket();
-
-        while (name.equals("")){
-            System.out.println("What's your name?");
-            name = scanner.next();
-            System.out.println("Welcome " + name + "! What can i get for you?");
-        }
 
         while (!checkout){
             System.out.println("Enter items: ");

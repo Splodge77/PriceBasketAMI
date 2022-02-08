@@ -79,4 +79,11 @@ public class BasketTest {
         assertEquals(newArray, basket.getItemsArray());
     }
 
+    @Test
+    public void hasTotal(){
+        Double expected = 0.00;
+        Double actual = basket.getTotal();
+        assertEquals(expected, actual);
+    }
+
 }
