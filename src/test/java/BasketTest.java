@@ -66,4 +66,17 @@ public class BasketTest {
         assertEquals(expected, actual);
     }
 
+    // setItems would be used if the user deleted all items accidentally. A copy of the Item arraylist could be cached
+    // and then used again to fill the basket again with the same items.
+    @Test
+    public void canSetItems(){
+        ArrayList<Item> newArray = new ArrayList<>();
+        Item hollandaise = new Item("Hollandaise");
+        Item eggs = new Item("Eggs");
+        newArray.add(hollandaise);
+        newArray.add(eggs);
+        basket.setItems(newArray);
+        assertEquals(newArray, basket.getItemsArray());
+    }
+
 }
