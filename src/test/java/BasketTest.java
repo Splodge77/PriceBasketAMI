@@ -18,8 +18,8 @@ public class BasketTest {
     @Before
     public void before(){
         basket = new Basket();
-        item1 = new Item("Cheese");
-        item2 = new Item("Bacon");
+        item1 = new Item("Cheese", 3.99);
+        item2 = new Item("Bacon", 4.99);
         basket.addItem(item1);
         basket.addItem(item2);
     }
@@ -34,7 +34,7 @@ public class BasketTest {
 
     @Test
     public void canAddItem(){
-        Item newItem = new Item("Mushroom");
+        Item newItem = new Item("Mushroom", 1.49);
         basket.addItem(newItem);
         ArrayList<Item> emptyArray = new ArrayList<>();
         assertNotEquals(emptyArray, basket.getItemsArray());
@@ -71,8 +71,8 @@ public class BasketTest {
     @Test
     public void canSetItems(){
         ArrayList<Item> newArray = new ArrayList<>();
-        Item hollandaise = new Item("Hollandaise");
-        Item eggs = new Item("Eggs");
+        Item hollandaise = new Item("Hollandaise", 7.99);
+        Item eggs = new Item("Eggs", 2.99);
         newArray.add(hollandaise);
         newArray.add(eggs);
         basket.setItems(newArray);
