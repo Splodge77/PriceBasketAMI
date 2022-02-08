@@ -58,4 +58,12 @@ public class BasketTest {
         assertEquals(expectedName, actualName);
     }
 
+    @Test
+    public void canClearBasket(){
+        basket.clearBasket();
+        ArrayList<Item> expected = new ArrayList<>();
+        ArrayList<Item> actual = basket.getItemsArray();
+        assertEquals(expected, actual);
+    }
+
 }

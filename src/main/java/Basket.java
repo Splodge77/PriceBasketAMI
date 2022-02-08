@@ -31,7 +31,7 @@ public class Basket {
         this.items.add(item);
     }
 
-    public void deleteItems(){
+    public void clearBasket(){
         this.items.clear();
     }
 
