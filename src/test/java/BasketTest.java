@@ -41,6 +41,14 @@ public class BasketTest {
     }
 
     @Test
+    public void canRemoveItem(){
+        basket.removeItem(item1);
+        ArrayList<Item> expected = new ArrayList<>();
+        expected.add(item2);
+        assertEquals(expected, basket.getItemsArray());
+    }
+
+    @Test
     public void hasId(){
         assertNotNull(basket.getId());
     }
@@ -81,9 +89,38 @@ public class BasketTest {
 
     @Test
     public void hasTotal(){
-        Double expected = 0.00;
+        Double expected = 8.98;
         Double actual = basket.getTotal();
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void canSetTotal(){
+        Double expected = 100.00;
+        basket.setTotal(expected);
+        Double actual = basket.getTotal();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getItemListReturnsString(){
+        String expected = "Cheese, Bacon";
+        String actual = basket.getItemList();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void addingItemIncrementsPrice(){
+        Double expected = 9.98;
+        Item chocolateBar = new Item("Snickers", 1.00);
+        basket.addItem(chocolateBar);
+        Double actual = basket.getTotal();
+        assertEquals(expected,actual);
+    }
+
+//    @Test
+//    public void canApplyDiscounts(){
+//
+//    }
 
 }

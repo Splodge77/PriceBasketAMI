@@ -1,5 +1,7 @@
 package main.java;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -31,6 +33,11 @@ public class Basket {
 
     public void addItem(Item item){
         this.items.add(item);
+        this.total += item.price;
+    }
+
+    public void removeItem(Item item){
+        this.items.remove(item);
     }
 
     public void clearBasket(){
@@ -54,7 +61,31 @@ public class Basket {
         return this.total;
     }
 
+    public String getTotalString() {
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        return formatter.format(this.total);
+    }
+
     public void setTotal(Double total){
         this.total = total;
     }
+
+    public String getItemList(){
+        ArrayList<String> itemList = new ArrayList<>();
+        for (Item item: this.items){
+            itemList.add(item.getName());
+        }
+        return itemList.toString().replace("[", "").replace("]","");
+    }
+
+//    public void applyDiscounts(String itemToDiscount, Double percentDiscount){
+//        for (Item item : this.items){
+//            if (item.getName().equals(itemToDiscount)){
+//                Double newPrice = item.price -= (item.price * (percentDiscount /100));
+//                Item newItem = new Item(item.getName(), newPrice);
+//                this
+//            }
+//        }
+//
+//    }
 }
