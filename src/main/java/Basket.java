@@ -38,6 +38,7 @@ public class Basket {
 
     public void removeItem(Item item){
         this.items.remove(item);
+        this.total -= item.price;
     }
 
     public void clearBasket(){
@@ -78,14 +79,25 @@ public class Basket {
         return itemList.toString().replace("[", "").replace("]","");
     }
 
-//    public void applyDiscounts(String itemToDiscount, Double percentDiscount){
-//        for (Item item : this.items){
-//            if (item.getName().equals(itemToDiscount)){
-//                Double newPrice = item.price -= (item.price * (percentDiscount /100));
-//                Item newItem = new Item(item.getName(), newPrice);
-//                this
-//            }
-//        }
-//
-//    }
+    public void applyDiscountToProducts(String itemToDiscount, Double percentDiscount){
+        NumberFormat formatter = new DecimalFormat("#0.00");
+        for (Item item : this.items) {
+            if (item.getName().equals(itemToDiscount)) {
+                Double newPrice = item.price -= (item.price * (percentDiscount / 100));
+                String newFormatString = formatter.format(newPrice);
+                Double forMattedPrice = Double.parseDouble(newFormatString);
+                item.setPrice(forMattedPrice);
+            }
+        }
+        this.updateTotal();
+    }
+
+    private void updateTotal() {
+        Double newTotal = 0.00;
+        this.setTotal(0.00);
+        for (Item item: this.items){
+            newTotal += item.price;
+        }
+        this.setTotal(newTotal);
+    }
 }
