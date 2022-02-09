@@ -42,6 +42,33 @@ public class Main {
                         System.out.println("We didn't recognise some items and so they have not been added to your basket.");
                 }
             }
+            System.out.println("Sub-total: "+ basket.getTotalString());
+            double appleDiscount = 0.00;
+            for (Item item :basket.items){
+                if (item.name.equals("Apples")){
+                    appleDiscount += 0.10;
+                }
+            }
+            int soupCounter = 0;
+            for (Item item : basket.items){
+                if (item.name.equals("Soup")){
+                    soupCounter += 1;
+                }
+            }
+            if (soupCounter > 2) {
+                soupCounter /= 2;
+            } else {
+                soupCounter -= 1;
+            }
+            double breadDiscount = 0.5 * soupCounter;
+            if (appleDiscount > 0.00 || soupCounter > 0){
+                System.out.println("Apples are 10% off today, you've saved £"+ appleDiscount);
+                System.out.println("Half off Bread when you buy soup, you've saved £"+breadDiscount);
+            } else {
+                System.out.println("No discounts applied");
+            }
+            basket.applyDiscountToProducts("Apples", 10.00);
+            basket.applyHalfPriceOffer("Soup","Bread");
             System.out.println("You have ordered: "+ basket.getItemList());
             System.out.println("After discounts, your total is: £"+ basket.getTotalString());
             checkout = true;

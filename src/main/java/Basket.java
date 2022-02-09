@@ -100,4 +100,30 @@ public class Basket {
         }
         this.setTotal(newTotal);
     }
+
+    public void applyHalfPriceOffer(String itemToCheck, String itemToDiscount) {
+        NumberFormat formatter = new DecimalFormat("#0.00");
+
+        int discountCounter = 0;
+        for (Item item : this.items){
+            if(item.name.equals(itemToCheck)){
+                discountCounter += 1;
+            }
+        }
+        if (discountCounter > 2) {
+            discountCounter = discountCounter / 2;
+        } else {
+            discountCounter -= 1;
+        }
+        for (Item item: this.items) {
+            while (discountCounter > 0 && item.name.equals(itemToDiscount)){
+                item.price /= 2;
+                String newFormatString = formatter.format(item.price);
+                Double forMattedPrice = Double.parseDouble(newFormatString);
+                item.setPrice(forMattedPrice);
+                discountCounter -= 1;
+            }
+        }
+        this.updateTotal();
+    }
 }

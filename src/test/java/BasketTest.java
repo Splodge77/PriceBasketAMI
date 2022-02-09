@@ -132,4 +132,14 @@ public class BasketTest {
         assertEquals(expectedNewTotal, actualTotal);
     }
 
+    @Test
+    public void canApplyHalfPriceOffer(){
+        Item anotherBacon = new Item("Bacon", 4.99);
+        basket.addItem(anotherBacon);
+        basket.applyHalfPriceOffer("Bacon", "Cheese");
+        Double expected = 11.98;
+        Double actual = basket.getTotal();
+        assertEquals(expected, actual);
+    }
+
 }
