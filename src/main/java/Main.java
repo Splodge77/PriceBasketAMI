@@ -23,35 +23,42 @@ public class Main {
 
         // currently, the app is designed to 'checkout' automatically after one line of input, however in a later
         // version we might like to control the time at which a customer checks out in case any changes want to be made
-        while (!checkout){
+        while (!checkout) {
             System.out.println("Welcome, please enter your shopping items with one space in-between: ");
             String input = scanner.nextLine();
             String delimiter = " ";
             String[] inputArray = input.split(delimiter);
-            for (String itemInput : inputArray){
-                switch (itemInput){
-                    case "Soup": basket.addItem(soup);
+            for (String itemInput : inputArray) {
+                switch (itemInput) {
+                    case "Soup":
+                        basket.addItem(soup);
                         break;
-                    case "Bread": basket.addItem(bread);
+                    case "Bread":
+                        basket.addItem(bread);
                         break;
-                    case "Milk": basket.addItem(milk);
+                    case "Milk":
+                        basket.addItem(milk);
                         break;
-                    case "Apples": basket.addItem(apples);
+                    case "Apples":
+                        basket.addItem(apples);
                         break;
                     default:
                         System.out.println("We didn't recognise some items and so they have not been added to your basket.");
                 }
             }
-            System.out.println("Sub-total: "+ basket.getTotalString());
+            System.out.println("Sub-total: " + basket.getTotalString());
+
+            // This solution below is frankly not efficient and ugly, would prefer that the discount and half off
+            // methods alo returned a discount value string
             double appleDiscount = 0.00;
-            for (Item item :basket.items){
-                if (item.name.equals("Apples")){
+            for (Item item : basket.items) {
+                if (item.name.equals("Apples")) {
                     appleDiscount += 0.10;
                 }
             }
             int soupCounter = 0;
-            for (Item item : basket.items){
-                if (item.name.equals("Soup")){
+            for (Item item : basket.items) {
+                if (item.name.equals("Soup")) {
                     soupCounter += 1;
                 }
             }
@@ -61,18 +68,19 @@ public class Main {
                 soupCounter -= 1;
             }
             double breadDiscount = 0.5 * soupCounter;
-            if (appleDiscount > 0.00 || soupCounter > 0){
-                System.out.println("Apples are 10% off today, you've saved £"+ appleDiscount);
-                System.out.println("Half off Bread when you buy soup, you've saved £"+breadDiscount);
+            if (appleDiscount > 0.00 || soupCounter > 0) {
+                System.out.println("Apples are 10% off today, you've saved £" + appleDiscount);
+                System.out.println("Half off Bread when you buy soup, you've saved £" + breadDiscount);
             } else {
                 System.out.println("No discounts applied");
             }
+            // TODO: Solve rounding issue with apple discount
+
             basket.applyDiscountToProducts("Apples", 10.00);
-            basket.applyHalfPriceOffer("Soup","Bread");
-            System.out.println("You have ordered: "+ basket.getItemList());
-            System.out.println("After discounts, your total is: £"+ basket.getTotalString());
+            basket.applyHalfPriceOffer("Soup", "Bread");
+            System.out.println("You have ordered: " + basket.getItemList());
+            System.out.println("After discounts, your total is: £" + basket.getTotalString());
             checkout = true;
         }
-
     }
 }
